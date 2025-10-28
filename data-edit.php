@@ -5,16 +5,16 @@ include_once 'config/class-mahasiswa.php';
 $master = new MasterData();
 $mahasiswa = new Mahasiswa();
 // Mengambil daftar program studi, provinsi, dan status mahasiswa
-$prodiList = $master->getProdi();
+$tahunList = $master->getTahun();
 // Mengambil daftar provinsi
-$provinsiList = $master->getProvinsi();
+$kategoriList = $master->getKategori();
 // Mengambil daftar status mahasiswa
 $statusList = $master->getStatus();
 // Mengambil data mahasiswa yang akan diedit berdasarkan id dari parameter GET
 $dataMahasiswa = $mahasiswa->getUpdateMahasiswa($_GET['id']);
 if(isset($_GET['status'])){
     if($_GET['status'] == 'failed'){
-        echo "<script>alert('Gagal mengubah data mahasiswa. Silakan coba lagi.');</script>";
+        echo "<script>alert('Gagal mengubah data buku. Silakan coba lagi.');</script>";
     }
 }
 ?>
@@ -108,16 +108,16 @@ if(isset($_GET['status'])){
                                                     <option value="" selected disabled>Pilih Provinsi</option>
                                                     <?php
                                                     // Iterasi daftar provinsi dan menandai yang sesuai dengan data mahasiswa yang dipilih
-                                                    foreach ($provinsiList as $provinsi){
+                                                    foreach ($kategoriList as $kategori){
                                                         // Menginisialisasi variabel kosong untuk menandai opsi yang dipilih
-                                                        $selectedProvinsi = "";
+                                                        $selectedkategori = "";
                                                         // Mengecek apakah provinsi saat ini sesuai dengan data mahasiswa
-                                                        if($dataMahasiswa['provinsi'] == $provinsi['id']){
+                                                        if($dataMahasiswa['kategori'] == $kategori['id']){
                                                             // Jika sesuai, tandai sebagai opsi yang dipilih
-                                                            $selectedProvinsi = "selected";
+                                                            $selectedkategori = "selected";
                                                         }
-                                                        // Menampilkan opsi provinsi dengan penanda yang sesuai
-                                                        echo '<option value="'.$provinsi['id'].'" '.$selectedProvinsi.'>'.$provinsi['nama'].'</option>';
+                                                        // Menampilkan opsi kategori dengan penanda yang sesuai
+                                                        echo '<option value="'.$kategori['id'].'" '.$selectedkategori.'>'.$kategori['nama'].'</option>';
                                                     }
                                                     ?>
                                                 </select>

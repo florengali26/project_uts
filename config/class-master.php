@@ -5,36 +5,36 @@ include_once 'db-config.php';
 
 class MasterData extends Database {
 
-    // Method untuk mendapatkan daftar program studi
-    public function getProdi(){
-        $query = "SELECT * FROM tb_prodi";
+    // Method untuk mendapatkan daftar tahun terbit buku
+    public function getTahun(){
+        $query = "SELECT * FROM tb_tahun";
         $result = $this->conn->query($query);
-        $prodi = [];
+        $tahun = [];
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-                $prodi[] = [
-                    'id' => $row['kode_prodi'],
-                    'nama' => $row['nama_prodi']
+                $tahun[] = [
+                    'id' => $row['kode_tahun'],
+                    'nama' => $row['nama_tahun']
                 ];
             }
         }
-        return $prodi;
+        return $tahun;
     }
 
     // Method untuk mendapatkan daftar provinsi
-    public function getProvinsi(){
-        $query = "SELECT * FROM tb_provinsi";
+    public function getKategori(){
+        $query = "SELECT * FROM tb_kategori";
         $result = $this->conn->query($query);
-        $provinsi = [];
+        $kategori = [];
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-                $provinsi[] = [
-                    'id' => $row['id_provinsi'],
-                    'nama' => $row['nama_provinsi']
+                $kategori[] = [
+                    'id' => $row['id_buku'],
+                    'nama' => $row['kategori_buku']
                 ];
             }
         }
-        return $provinsi;
+        return $kategori;
     }
 
     // Method untuk mendapatkan daftar status mahasiswa menggunakan array statis
@@ -48,23 +48,23 @@ class MasterData extends Database {
     }
 
     // Method untuk input data program studi
-    public function inputProdi($data){
-        $kodeProdi = $data['kode'];
-        $namaProdi = $data['nama'];
+    public function inputtahun($data){
+        $kodetahun = $data['kode'];
+        $namatahun = $data['nama'];
         $query = "INSERT INTO tb_prodi (kode_prodi, nama_prodi) VALUES (?, ?)";
         $stmt = $this->conn->prepare($query);
         if(!$stmt){
             return false;
         }
-        $stmt->bind_param("ss", $kodeProdi, $namaProdi);
+        $stmt->bind_param("ss", $kodetahun, $namatahun);
         $result = $stmt->execute();
         $stmt->close();
         return $result;
     }
 
-    // Method untuk mendapatkan data program studi berdasarkan kode
-    public function getUpdateProdi($id){
-        $query = "SELECT * FROM tb_prodi WHERE kode_prodi = ?";
+    // Method untuk mendapatkan data tahun terbit berdasarkan kode
+    public function getUpdatetahun($id){
+        $query = "SELECT * FROM tb_tahun WHERE kode_tahun = ?";
         $stmt = $this->conn->prepare($query);
         if(!$stmt){
             return false;
@@ -76,32 +76,32 @@ class MasterData extends Database {
         if($result->num_rows > 0){
             $row = $result->fetch_assoc();
             $prodi = [
-                'id' => $row['kode_prodi'],
-                'nama' => $row['nama_prodi']
+                'id' => $row['kode_tahun'],
+                'nama' => $row['nama_tahun']
             ];
         }
         $stmt->close();
-        return $prodi;
+        return $tahun;
     }
 
-    // Method untuk mengedit data program studi
-    public function updateProdi($data){
-        $kodeProdi = $data['kode'];
-        $namaProdi = $data['nama'];
-        $query = "UPDATE tb_prodi SET nama_prodi = ? WHERE kode_prodi = ?";
+    // Method untuk mengedit data tahun terbit
+    public function updatetahun($data){
+        $kodetahun = $data['kode'];
+        $namatahun = $data['nama'];
+        $query = "UPDATE tb_tahun SET nama_tahun = ? WHERE kode_tahun = ?";
         $stmt = $this->conn->prepare($query);
         if(!$stmt){
             return false;
         }
-        $stmt->bind_param("ss", $namaProdi, $kodeProdi);
+        $stmt->bind_param("ss", $namatahun, $kodetahun);
         $result = $stmt->execute();
         $stmt->close();
         return $result;
     }
 
-    // Method untuk menghapus data program studi
-    public function deleteProdi($id){
-        $query = "DELETE FROM tb_prodi WHERE kode_prodi = ?";
+    // Method untuk menghapus data tahun terbit
+    public function deletetahun($id){
+        $query = "DELETE FROM tb_tahun WHERE kode_tahun = ?";
         $stmt = $this->conn->prepare($query);
         if(!$stmt){
             return false;
@@ -112,23 +112,23 @@ class MasterData extends Database {
         return $result;
     }
 
-    // Method untuk input data provinsi
-    public function inputProvinsi($data){
-        $namaProvinsi = $data['nama'];
-        $query = "INSERT INTO tb_provinsi (nama_provinsi) VALUES (?)";
+    // Method untuk input data kategori buku
+    public function inputKategori($data){
+        $namakategori = $data['nama'];
+        $query = "INSERT INTO tb_kategori (kategori_buku) VALUES (?)";
         $stmt = $this->conn->prepare($query);
         if(!$stmt){
             return false;
         }
-        $stmt->bind_param("s", $namaProvinsi);
+        $stmt->bind_param("s", $namakategori);
         $result = $stmt->execute();
         $stmt->close();
         return $result;
     }
 
-    // Method untuk mendapatkan data provinsi berdasarkan id
-    public function getUpdateProvinsi($id){
-        $query = "SELECT * FROM tb_provinsi WHERE id_provinsi = ?";
+    // Method untuk mendapatkan data kategori berdasarkan id buku
+    public function getUpdateKategori($id){
+        $query = "SELECT * FROM tb_kategori WHERE id_kategori = ?";
         $stmt = $this->conn->prepare($query);
         if(!$stmt){
             return false;
@@ -140,32 +140,32 @@ class MasterData extends Database {
         if($result->num_rows > 0){
             $row = $result->fetch_assoc();
             $provinsi = [
-                'id' => $row['id_provinsi'],
-                'nama' => $row['nama_provinsi']
+                'id' => $row['id_kategori'],
+                'nama' => $row['kategori_buku']
             ];
         }
         $stmt->close();
-        return $provinsi;
+        return $kategori;
     }
 
-    // Method untuk mengedit data provinsi
-    public function updateProvinsi($data){
-        $idProvinsi = $data['id'];
-        $namaProvinsi = $data['nama'];
-        $query = "UPDATE tb_provinsi SET nama_provinsi = ? WHERE id_provinsi = ?";
+    // Method untuk mengedit data kategori
+    public function updateKategori($data){
+        $idkategori = $data['id'];
+        $namakategori = $data['nama'];
+        $query = "UPDATE tb_kategori SET nama_kategori = ? WHERE id_kategori = ?";
         $stmt = $this->conn->prepare($query);
         if(!$stmt){
             return false;
         }
-        $stmt->bind_param("si", $namaProvinsi, $idProvinsi);
+        $stmt->bind_param("si", $kategoribuku, $idbuku);
         $result = $stmt->execute();
         $stmt->close();
         return $result;
     }
 
-    // Method untuk menghapus data provinsi
-    public function deleteProvinsi($id){
-        $query = "DELETE FROM tb_provinsi WHERE id_provinsi = ?";
+    // Method untuk menghapus data kategori
+    public function deleteKategori($id){
+        $query = "DELETE FROM tb_kategori WHERE id_kategori = ?";
         $stmt = $this->conn->prepare($query);
         if(!$stmt){
             return false;
