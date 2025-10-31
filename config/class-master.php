@@ -148,7 +148,7 @@ class MasterData extends Database {
         return $kategori;
     }
 
-    // Method untuk mengedit data kategori
+    // Method untuk mengedit data kategori buku
     public function updateKategori($data){
         $idkategori = $data['id'];
         $namakategori = $data['nama'];
@@ -163,7 +163,7 @@ class MasterData extends Database {
         return $result;
     }
 
-    // Method untuk menghapus data kategori
+    // Method untuk menghapus data kategori buku
     public function deleteKategori($id){
         $query = "DELETE FROM tb_kategori WHERE id_kategori = ?";
         $stmt = $this->conn->prepare($query);
