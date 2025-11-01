@@ -43,32 +43,39 @@ CREATE TABLE IF NOT EXISTS `tb_prodi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table db_simplecrud.tb_prodi: ~9 rows (approximately)
-INSERT INTO `tb_prodi` (`kode_prodi`, `nama_prodi`) VALUES
-	('ARS', 'Arsitek'),
-	('BD', 'Bisnis Digital'),
-	('DI', 'Desain Interior'),
-	('DKV', 'Desain Komunikasi Visual'),
-	('DM', 'Desain Mode'),
-	('MBD', 'Magister Bisnis Digital'),
-	('MDS', 'Magister Desain'),
-	('MR', 'Manajemen Ritel'),
-	('STI', 'Sistem dan Teknologi Informasi');
+INSERT INTO `tb_tahun` (`kode_tahun`, `nama_tahun`) VALUES
+	('2014', '2014'),
+	('2015', '2015'),
+	('2016', '2016'),
+	('2017', '2017'),
+	('2018', '2018'),
+	('2019', '2019'),
+	('2020', '2020'),
+	('2021', '2021'),
+	('2022', '2023');
 
--- Dumping structure for table db_simplecrud.tb_provinsi
-CREATE TABLE IF NOT EXISTS `tb_provinsi` (
-  `id_provinsi` smallint(3) NOT NULL AUTO_INCREMENT,
-  `nama_provinsi` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id_provinsi`)
+-- Dumping structure for table db_simplecrud.tb_kategori
+CREATE TABLE IF NOT EXISTS `tb_kategori` (
+  `id_buku` smallint(3) NOT NULL AUTO_INCREMENT,
+  `kategori_buku` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id_buku`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table db_simplecrud.tb_provinsi: ~6 rows (approximately)
-INSERT INTO `tb_provinsi` (`id_provinsi`, `nama_provinsi`) VALUES
-	(1, 'Bali'),
-	(2, 'Nusa Tenggara Timur'),
-	(3, 'Nusa Tenggara Barat'),
-	(4, 'Jawa Timur'),
-	(5, 'Jawa Tengah'),
-	(6, 'Jawa Barat');
+-- Dumping data for table db_simplecrud.tb_kategori: ~6 rows (approximately)
+INSERT INTO `tb_kategori` (`id_buku`, `nama_kategori`) VALUES
+	(1, 'Karya Umum Dan Ilmu Komputer'),
+	(2, 'Filsafat Dan Psikolog'),
+	(3, 'Agama'),
+	(4, 'Ilmu-Ilmu Sosial'),
+	(5, 'Bahasa'),
+	(6, 'Ilmu Alam Dan Matematika');
+  (7, 'Teknologi (Ilmu Terapan)');
+  (8, 'Seni Dan Rekreasi');
+  (9, 'Kesusastraan');
+  (10, 'Sejarah Dan Geografi');
+  (11, 'Fiksi');
+  (12, 'Majalah');
+  (13, 'Koleksi Khusus/Lokal');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

@@ -1,14 +1,14 @@
 <?php
 
 include_once 'config/class-mahasiswa.php';
-$mahasiswa = new Mahasiswa();
+$buku = new Buku();
 $kataKunci = '';
 // Mengecek apakah parameter GET 'search' ada
 if(isset($_GET['search'])){
 	// Mengambil kata kunci pencarian dari parameter GET 'search'
 	$kataKunci = $_GET['search'];
 	// Memanggil method searchMahasiswa untuk mencari data mahasiswa berdasarkan kata kunci dan menyimpan hasil dalam variabel $cariMahasiswa
-	$cariMahasiswa = $mahasiswa->searchMahasiswa($kataKunci);
+	$cariBuku = $buku->searchBuku($kataKunci);
 } 
 ?>
 <!doctype html>
@@ -88,50 +88,37 @@ if(isset($_GET['search'])){
 										// Mengecek apakah parameter GET 'search' ada
 										if(isset($_GET['search'])){
 											// Mengecek apakah ada data mahasiswa yang ditemukan
-											if(count($cariMahasiswa) > 0){
+											if(count($cariBuku) > 0){
 												// Menampilkan tabel hasil pencarian
 												echo '<table class="table table-striped" role="table">
 													<thead>
 														<tr>
 															<th>No</th>
-															<th>NIM</th>
-															<th>Nama</th>
-															<th>Prodi</th>
-															<th>Provinsi</th>
-															<th>Alamat</th>
+															<th>Id_buku</th>
+															<th>ISBN</th>
+															<th>JUdul_buku</th>
+															<th>kategori</th>
+															<th>Penerbit</th>
 															<th>Telp</th>
 															<th>Email</th>
-															<th class="text-center">Status</th>
-															<th class="text-center">Aksi</th>
 														</tr>
 													</thead>
 													<tbody>';
 													// Iterasi data mahasiswa yang ditemukan dan menampilkannya dalam tabel
 													foreach ($cariMahasiswa as $index => $mahasiswa){
-														// Mengubah status mahasiswa menjadi badge dengan warna yang sesuai
-														if($mahasiswa['status'] == 1){
-															$mahasiswa['status'] = '<span class="badge bg-success">Aktif</span>';
-														} elseif($mahasiswa['status'] == 2){
-															$mahasiswa['status'] = '<span class="badge bg-danger">Tidak Aktif</span>';
-														} elseif($mahasiswa['status'] == 3){
-															$mahasiswa['status'] = '<span class="badge bg-warning text-dark">Cuti</span>';
-														} elseif($mahasiswa['status'] == 4){
-															$mahasiswa['status'] = '<span class="badge bg-primary">Lulus</span>';
-														} 
 														// Menampilkan baris data mahasiswa dalam tabel
 														echo '<tr class="align-middle">
 															<td>'.($index + 1).'</td>
-															<td>'.$mahasiswa['nim'].'</td>
-															<td>'.$mahasiswa['nama'].'</td>
-															<td>'.$mahasiswa['prodi'].'</td>
-															<td>'.$mahasiswa['provinsi'].'</td>
-															<td>'.$mahasiswa['alamat'].'</td>
-															<td>'.$mahasiswa['telp'].'</td>
-															<td>'.$mahasiswa['email'].'</td>
-															<td class="text-center">'.$mahasiswa['status'].'</td>
+															<td>'.$buku['id_buku'].'</td>
+															<td>'.$buku['ISBN'].'</td>
+															<td>'.$buku['judul_buku'].'</td>
+															<td>'.$buku['kategori'].'</td>
+															<td>'.$buku['penerbit'].'</td>
+															<td>'.$buku['email'].'</td>
+															<td>'.$buku['telp'].'</td>
 															<td class="text-center">
-																<button type="button" class="btn btn-sm btn-warning me-1" onclick="window.location.href=\'data-edit.php?id='.$mahasiswa['id'].'\'"><i class="bi bi-pencil-fill"></i> Edit</button>
-																<button type="button" class="btn btn-sm btn-danger" onclick="if(confirm(\'Yakin ingin menghapus data mahasiswa ini?\')){window.location.href=\'proses/proses-delete.php?id='.$mahasiswa['id'].'\'}"><i class="bi bi-trash-fill"></i> Hapus</button>
+																<button type="button" class="btn btn-sm btn-warning me-1" onclick="window.location.href=\'data-edit.php?id='.$buku['id'].'\'"><i class="bi bi-pencil-fill"></i> Edit</button>
+																<button type="button" class="btn btn-sm btn-danger" onclick="if(confirm(\'Yakin ingin menghapus data buku ini?\')){window.location.href=\'proses/proses-delete.php?id='.$buku['id'].'\'}"><i class="bi bi-trash-fill"></i> Hapus</button>
 															</td>
 														</tr>';
 													}
@@ -140,13 +127,13 @@ if(isset($_GET['search'])){
 											} else {
 												// Menampilkan pesan jika tidak ada data mahasiswa yang ditemukan
 												echo '<div class="alert alert-warning" role="alert">
-														Tidak ditemukan data mahasiswa yang sesuai dengan kata kunci "<strong>'.htmlspecialchars($_GET['search']).'</strong>".
+														Tidak ditemukan data buku yang sesuai dengan kata kunci "<strong>'.htmlspecialchars($_GET['search']).'</strong>".
 													  </div>';
 											}
 										} else {
 											// Menampilkan pesan jika form pencarian belum disubmit
 											echo '<div class="alert alert-info" role="alert">
-													Silakan masukkan kata kunci pencarian di atas untuk mencari data mahasiswa.
+													Silakan masukkan kata kunci pencarian di atas untuk mencari data buku.
 												  </div>';
 										}
 										?>

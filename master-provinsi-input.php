@@ -3,7 +3,7 @@
 // Silakan lihat komentar di file data-input.php untuk penjelasan kode ini, karena struktur dan logikanya serupa.
 if(isset($_GET['status'])){
     if($_GET['status'] == 'failed'){
-        echo "<script>alert('Gagal menambahkan data provinsi. Silakan coba lagi.');</script>";
+        echo "<script>alert('Gagal menambahkan data kategori buku. Silakan coba lagi.');</script>";
     }
 }
 
@@ -28,12 +28,12 @@ if(isset($_GET['status'])){
 					<div class="container-fluid">
 						<div class="row">
 							<div class="col-sm-6">
-								<h3 class="mb-0">Input Provinsi</h3>
+								<h3 class="mb-0">Input Kategori Buku</h3>
 							</div>
 							<div class="col-sm-6">
 								<ol class="breadcrumb float-sm-end">
 									<li class="breadcrumb-item"><a href="index.php">Beranda</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Input Provinsi</li>
+									<li class="breadcrumb-item active" aria-current="page">Input Kategori</li>
 								</ol>
 							</div>
 						</div>
@@ -46,7 +46,7 @@ if(isset($_GET['status'])){
 							<div class="col-12">
 								<div class="card">
 									<div class="card-header">
-										<h3 class="card-title">Formulir Provinsi</h3>
+										<h3 class="card-title">Formulir Kategori</h3>
 										<div class="card-tools">
 											<button type="button" class="btn btn-tool" data-lte-toggle="card-collapse" title="Collapse">
 												<i data-lte-icon="expand" class="bi bi-plus-lg"></i>
@@ -57,15 +57,15 @@ if(isset($_GET['status'])){
 											</button>
 										</div>
 									</div>
-                                    <form action="proses/proses-provinsi.php?aksi=inputprovinsi" method="POST">
+                                    <form action="proses/proses-kategori.php?aksi=inputprovinsi" method="POST">
 									    <div class="card-body">
 											<div class="mb-3">
-												<label for="nama" class="form-label">Nama Provinsi</label>
-												<input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama Provinsi" required>
+												<label for="nama" class="form-label">Nama Kategori</label>
+												<input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Kategori Buku" required>
 											</div>
                                         </div>
 									    <div class="card-footer">
-                                            <button type="button" class="btn btn-danger me-2 float-start" onclick="window.location.href='master-provinsi-list.php'">Batal</button>
+                                            <button type="button" class="btn btn-danger me-2 float-start" onclick="window.location.href='master-kategori-list.php'">Batal</button>
                                             <button type="reset" class="btn btn-secondary me-2 float-start">Reset</button>
                                             <button type="submit" class="btn btn-primary float-end">Submit</button>
                                         </div>

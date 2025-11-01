@@ -6,15 +6,7 @@ $master = new MasterData();
 $tahunlist = $master->getTahun();
 // Mengambil daftar provinsi
 $kategoriList = $master->getKategori();
-// Mengambil daftar status mahasiswa
-$statusList = $master->getStatus();
 // Menampilkan alert berdasarkan status yang diterima melalui parameter GET
-if(isset($_GET['status'])){
-    // Mengecek nilai parameter GET 'status' dan menampilkan alert yang sesuai menggunakan JavaScript
-    if($_GET['status'] == 'failed'){
-        echo "<script>alert('Gagal menambahkan data mahasiswa. Silakan coba lagi.');</script>";
-    }
-}
 ?>
 <!doctype html>
 <html lang="en">
@@ -110,18 +102,6 @@ if(isset($_GET['status'])){
                                             <div class="mb-3">
                                                 <label for="telp" class="form-label">Nomor Telepon</label>
                                                 <input type="tel" class="form-control" id="telp" name="telp" placeholder="Masukkan Nomor Telpon/HP" pattern="[0-9+\-\s()]{6,20}" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="status" class="form-label">Status</label>
-                                                <select class="form-select" id="status" name="status" required>
-                                                    <option value="" selected disabled>Pilih Status</option>
-                                                    <?php 
-                                                    // Iterasi daftar status mahasiswa dan menampilkannya sebagai opsi dalam dropdown
-                                                    foreach ($statusList as $status){
-                                                        echo '<option value="'.$status['id'].'">'.$status['nama'].'</option>';
-                                                    }
-                                                    ?>
-                                                </select>
                                             </div>
                                         </div>
 									    <div class="card-footer">
