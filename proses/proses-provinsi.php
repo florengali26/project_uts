@@ -8,7 +8,7 @@ $master = new MasterData();
 if($_GET['aksi'] == 'inputkategori'){
     // Mengambil data provinsi dari form input menggunakan metode POST dan menyimpannya dalam array
     $dataKategori = [
-        'nama' => $_POST['nama']
+        'kategori' => $_POST['kategori_buku']
     ];
     // Memanggil method inputProvinsi untuk memasukkan data provinsi dengan parameter array $dataProvinsi
     $input = $master->inputKategori($dataKategori);
@@ -20,8 +20,8 @@ if($_GET['aksi'] == 'inputkategori'){
 } elseif($_GET['aksi'] == 'updatekategori'){
     // Mengambil data provinsi dari form edit menggunakan metode POST dan menyimpannya dalam array
     $dataKategori = [
-        'id' => $_POST['id'],
-        'nama' => $_POST['nama']
+        'id' => $_POST['id_kategori'],
+        'kategori' => $_POST['kategori_buku']
     ];
     // Memanggil method updateProvinsi untuk mengupdate data provinsi dengan parameter array $dataProvinsi
     $update = $master->updateKategori($dataKategori);

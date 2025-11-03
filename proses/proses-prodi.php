@@ -34,7 +34,7 @@ if($_GET['aksi'] == 'inputtahun'){
         header("Location: ../master-tahun-list.php?status=editsuccess");
     } else {
         // Jika gagal, redirect ke halaman master-prodi-edit.php dengan status failed dan membawa id prodi
-        header("Location: ../master-tahun-edit.php?id=".$dataProdi['id']."&status=failed");
+        header("Location: ../master-tahun-edit.php?id=".$dataTahun['id']."&status=failed");
     }
 } elseif($_GET['aksi'] == 'deletetahun'){
     // Mengambil id prodi dari parameter GET

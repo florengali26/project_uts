@@ -77,12 +77,12 @@ $datakategori = $master->getKategori();
 											</thead>
 											<tbody>
 												<?php
-													if(count($dataKategori) == 0){
+													if(count($datakategori) == 0){
 													    echo '<tr class="align-middle">
 															<td colspan="3" class="text-center">Tidak ada data provinsi.</td>
 														</tr>';
 													} else {
-														foreach ($dataKategori as $index => $kategori){
+														foreach ($datakategori as $index => $kategori){
 															echo '<tr class="align-middle">
 																<td>'.($index + 1).'</td>
 																<td>'.$kategori['nama'].'</td>

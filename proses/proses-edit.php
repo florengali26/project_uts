@@ -6,14 +6,14 @@ include_once '../config/class-mahasiswa.php';
 $buku = new Buku();
 // Mengambil data mahasiswa dari form edit menggunakan metode POST dan menyimpannya dalam array
 $dataBuku = [
-    'id_buku' => $row['id_buku'],
-    'ISBN' => $row['ISBN'],
-    'judul' => $row['judul_buku'],
-    'tahun' => $row['tahun'],
-    'kategori' => $row['kategori'],
-    'alamat' => $row['alamat'],
-    'email' => $row['email'],
-    'telp' => $row['telp'],
+    'id_buku' => $_POST['id_buku'],
+    'ISBN' => $_POST['isbn'],
+    'judul' => $_POST['judul'],
+    'tahun' => $_POST['tahun'],
+    'penerbit' => $_POST['penerbit'],
+    'kategori' => $_POST['kategori'],
+    'email' => $_POST['email'],
+    'telp' => $_POST['telp'],
 ];
 // Memanggil method editMahasiswa untuk mengupdate data mahasiswa dengan parameter array $dataMahasiswa
 $edit = $buku->editBuku($dataBuku);

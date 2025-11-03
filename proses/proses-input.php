@@ -6,15 +6,13 @@ include '../config/class-mahasiswa.php';
 $buku = new Buku();
 // Mengambil data mahasiswa dari form input menggunakan metode POST dan menyimpannya dalam array
 $dataBuku = [
-    'id_buku' => $_POST['id_buku'],
-    'ISBN' => $_POST['ISBN'],
-    'judul_buku' => $_POST['judul_buku'],
+    'ISBN' => $_POST['isbn'],
+    'judul_buku' => $_POST['judul'],
     'tahun' => $_POST['tahun'],
-    'alamat' => $_POST['alamat'],
-    'provinsi' => $_POST['provinsi'],
+    'penerbit' => $_POST['penerbit'],
+    'kategori' => $_POST['kategori'],
     'email' => $_POST['email'],
-    'telp' => $_POST['telp'],
-    'status' => $_POST['status']
+    'telp' => $_POST['telp']
 ];
 // Memanggil method inputMahasiswa untuk memasukkan data mahasiswa dengan parameter array $dataMahasiswa
 $input = $buku->inputBuku($dataBuku);

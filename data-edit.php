@@ -8,8 +8,6 @@ $buku = new Buku();
 $tahunList = $master->getTahun();
 // Mengambil daftar provinsi
 $kategoriList = $master->getKategori();
-// Mengambil daftar status mahasiswa
-$statusList = $master->getStatus();
 // Mengambil data mahasiswa yang akan diedit berdasarkan id dari parameter GET
 $dataBuku = $buku->getUpdateBuku($_GET['id']);
 if(isset($_GET['status'])){
@@ -69,14 +67,14 @@ if(isset($_GET['status'])){
 									</div>
                                     <form action="proses/proses-edit.php" method="POST">
 									    <div class="card-body">
-                                            <input type="hidden" name="id" value="<?php echo $dataBuku['id']; ?>">
+                                            <input type="hidden" name="id_buku" value="<?php echo $dataBuku['id_buku']; ?>">
                                             <div class="mb-3">
                                                 <label for="judul" class="form-label">Judul Buku</label>
-                                                <input type="text" class="form-control" id="judul" name="judul" placeholder="Masukkan Judul Buku" value="<?php echo $dataBuku['judul']; ?>" required>
+                                                <input type="text" class="form-control" id="judul" name="judul" placeholder="Masukkan Judul Buku" value="<?php echo $dataBuku['judul_buku']; ?>" required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="isbn" class="form-label">ISBN Buku (International Standard Book Number)</label>
-                                                <input type="number" class="form-control" id="isbn" name="isbn" placeholder="Masukkan ISBN Buku" value="<?php echo $dataBuku['isbn']; ?>" required>
+                                                <input type="number" class="form-control" id="isbn" name="isbn" placeholder="Masukkan ISBN Buku" value="<?php echo $dataBuku['ISBN']; ?>" required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="tahun" class="form-label">Tahun Terbit</label>

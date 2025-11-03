@@ -1,9 +1,9 @@
 <?php
 
 include_once 'config/class-mahasiswa.php';
-$Buku = new buku();
+$buku = new buku();
 // Menampilkan alert berdasarkan status yang diterima melalui parameter GET
-$dataBuku = $Buku->getAllBuku();
+$dataBuku = $buku->getAllBuku();
 
 ?>
 <!doctype html>
@@ -26,7 +26,7 @@ $dataBuku = $Buku->getAllBuku();
 					<div class="container-fluid">
 						<div class="row">
 							<div class="col-sm-6">
-								<h3 class="mb-0">Daftar Mahasiswa</h3>
+								<h3 class="mb-0">Daftar Buku</h3>
 							</div>
 							<div class="col-sm-6">
 								<ol class="breadcrumb float-sm-end">
@@ -44,7 +44,7 @@ $dataBuku = $Buku->getAllBuku();
 							<div class="col-12">
 								<div class="card">
 									<div class="card-header">
-										<h3 class="card-title">Tabel Mahasiswa</h3>
+										<h3 class="card-title">Tabel Buku</h3>
 										<div class="card-tools">
 											<button type="button" class="btn btn-tool" data-lte-toggle="card-collapse" title="Collapse">
 												<i data-lte-icon="expand" class="bi bi-plus-lg"></i>
@@ -59,37 +59,37 @@ $dataBuku = $Buku->getAllBuku();
 										<table class="table table-striped" role="table">
 											<thead>
 												<tr>
-													<th>id_buku</th>
-													<th>judul_buku</th>
+													<th>No</th>
+													<th>Judul</th>
 													<th>ISBN</th>
-													<th>tahun</th>
-													<th>alamat</th>
-													<th>kategori</th>
-													<th>email</th>
-													<th>telp</th>
+													<th>Tahun</th>
+													<th>Penerbit</th>
+													<th>Kategori</th>
+													<th>Email</th>
+													<th>Telp</th>
+													<th>Aksi</th>
 												</tr>
 											</thead>
 											<tbody>
 												<?php
 													if(count($dataBuku) == 0){
 													    echo '<tr class="align-middle">
-															<td colspan="10" class="text-center">Tidak ada data mahasiswa.</td>
+															<td colspan="10" class="text-center">Tidak ada data Buku.</td>
 														</tr>';
 													} else {
 														foreach ($dataBuku as $index => $buku){
 															echo '<tr class="align-middle">
 																<td>'.($index + 1).'</td>
-																<td>'.$buku['id_buku'].'</td>
-																<td>'.$buku['ISBN'].'</td>
 																<td>'.$buku['judul_buku'].'</td>
+																<td>'.$buku['ISBN'].'</td>
 																<td>'.$buku['tahun'].'</td>
 																<td>'.$buku['penerbit'].'</td>
 																<td>'.$buku['kategori'].'</td>
 																<td>'.$buku['email'].'</td>
 																<td>'.$buku['telp'].'</td>
 																<td class="text-center">
-																	<button type="button" class="btn btn-sm btn-warning me-1" onclick="window.location.href=\'data-edit.php?id='.$mahasiswa['id'].'\'"><i class="bi bi-pencil-fill"></i> Edit</button>
-																	<button type="button" class="btn btn-sm btn-danger" onclick="if(confirm(\'Yakin ingin menghapus data mahasiswa ini?\')){window.location.href=\'proses/proses-delete.php?id='.$mahasiswa['id'].'\'}"><i class="bi bi-trash-fill"></i> Hapus</button>
+																	<button type="button" class="btn btn-sm btn-warning me-1" onclick="window.location.href=\'data-edit.php?id='.$buku['id_buku'].'\'"><i class="bi bi-pencil-fill"></i> Edit</button>
+																	<button type="button" class="btn btn-sm btn-danger" onclick="if(confirm(\'Yakin ingin menghapus data buku ini?\')){window.location.href=\'proses/proses-delete.php?id='.$buku['id_buku'].'\'}"><i class="bi bi-trash-fill"></i> Hapus</button>
 																</td>
 															</tr>';
 														}
@@ -99,7 +99,7 @@ $dataBuku = $Buku->getAllBuku();
 										</table>
 									</div>
 									<div class="card-footer">
-										<button type="button" class="btn btn-primary" onclick="window.location.href='data-input.php'"><i class="bi bi-plus-lg"></i> Tambah Mahasiswa</button>
+										<button type="button" class="btn btn-primary" onclick="window.location.href='data-input.php'"><i class="bi bi-plus-lg"></i> Tambah Buku</button>
 									</div>
 								</div>
 							</div>

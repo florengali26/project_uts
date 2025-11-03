@@ -36,7 +36,7 @@ if(isset($_GET['status'])){
 							<div class="col-sm-6">
 								<ol class="breadcrumb float-sm-end">
 									<li class="breadcrumb-item"><a href="index.php">Beranda</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Edit Tahun Prodi</li>
+									<li class="breadcrumb-item active" aria-current="page">Edit Tahun terbit</li>
 								</ol>
 							</div>
 						</div>
@@ -60,19 +60,19 @@ if(isset($_GET['status'])){
 											</button>
 										</div>
 									</div>
-                                    <form action="proses/proses-prodi.php?aksi=updateprodi" method="POST">
+                                    <form action="proses/proses-tahun.php?aksi=updatetahun" method="POST">
 									    <div class="card-body">
                                             <div class="mb-3">
                                                 <label for="nama" class="form-label">Kode Tahun Terbit</label>
-                                                <input type="text" class="form-control-plaintext" id="tahun" name="tahun" placeholder="Masukkan Kode Tahun Terbit" value="<?php echo $dataTahun['id']; ?>" required readonly>
+                                                <input type="char" class="form-control-plaintext" id="tahun" name="tahun" placeholder="Masukkan Kode Tahun Terbit" value="<?php echo $dataTahun['id']; ?>" required readonly>
                                             </div>
 											<div class="mb-3">
-												<label for="nama" class="form-label">Nama Tahun Terbit</label>
-												<input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama Tahun Terbit" value="<?php echo $dataTahun['nama']; ?>" required>
+												<label for="nama" class="form-label">Tahun Terbit</label>
+												<input type="char" class="form-control" id="nama" name="nama" placeholder="Masukkan  Tahun Terbit" value="<?php echo $dataTahun['nama']; ?>" required>
 											</div>
                                         </div>
 									    <div class="card-footer">
-                                            <button type="button" class="btn btn-danger me-2 float-start" onclick="window.location.href='master-prodi-list.php'">Batal</button>
+                                            <button type="button" class="btn btn-danger me-2 float-start" onclick="window.location.href='master-tahun-list.php'">Batal</button>
                                             <button type="submit" class="btn btn-warning float-end">Update Data</button>
                                         </div>
                                     </form>

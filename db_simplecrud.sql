@@ -20,26 +20,26 @@ CREATE DATABASE IF NOT EXISTS `db_simplecrud` /*!40100 DEFAULT CHARACTER SET utf
 USE `db_simplecrud`;
 
 -- Dumping structure for table db_simplecrud.tb_mahasiswa
-CREATE TABLE IF NOT EXISTS `tb_mahasiswa` (
-  `id_mhs` int(11) NOT NULL AUTO_INCREMENT,
-  `nim_mhs` char(12) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `nama_mhs` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `prodi_mhs` char(10) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+CREATE TABLE IF NOT EXISTS `tb_buku` (
+  `id_buku` int(11) NOT NULL AUTO_INCREMENT,
+  `ISBN` char(12) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `judul_buku` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `tahun` char(10) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+   `nama_penerbit` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `alamat` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `provinsi` mediumint(3) NOT NULL,
+  `kategori_buku` mediumint(3) NOT NULL,
   `email` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `telp` char(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `status_mhs` tinyint(1) NOT NULL,
   PRIMARY KEY (`id_mhs`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table db_simplecrud.tb_mahasiswa: ~0 rows (approximately)
 
 -- Dumping structure for table db_simplecrud.tb_prodi
-CREATE TABLE IF NOT EXISTS `tb_prodi` (
-  `kode_prodi` char(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nama_prodi` char(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`kode_prodi`)
+CREATE TABLE IF NOT EXISTS `tb_tahun` (
+  `kode_tahun` char(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_tahun` char(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`kode_tahun`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table db_simplecrud.tb_prodi: ~9 rows (approximately)
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `tb_kategori` (
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table db_simplecrud.tb_kategori: ~6 rows (approximately)
-INSERT INTO `tb_kategori` (`id_buku`, `nama_kategori`) VALUES
+INSERT INTO `tb_kategori` (`id_buku`, `kategori_buku`) VALUES
 	(1, 'Karya Umum Dan Ilmu Komputer'),
 	(2, 'Filsafat Dan Psikolog'),
 	(3, 'Agama'),

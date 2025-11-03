@@ -85,7 +85,7 @@ $kategoriList = $master->getKategori();
                                             </div>
                                             <div class="mb-3">
                                                 <label for="kategori" class="form-label">Kategori</label>
-                                                <select class="form-select" id="provinsi" name="kategori" required>
+                                                <select class="form-select" id="kategori" name="kategori" required>
                                                     <option value="" selected disabled>Pilih Kategori</option>
                                                     <?php
                                                     // Iterasi daftar provinsi dan menampilkannya sebagai opsi dalam dropdown

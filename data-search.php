@@ -94,31 +94,31 @@ if(isset($_GET['search'])){
 													<thead>
 														<tr>
 															<th>No</th>
-															<th>Id_buku</th>
+															<th>Judul</th>
 															<th>ISBN</th>
-															<th>JUdul_buku</th>
-															<th>kategori</th>
+															<th>Tahun</th>
 															<th>Penerbit</th>
+															<th>kategori</th>
 															<th>Telp</th>
 															<th>Email</th>
 														</tr>
 													</thead>
 													<tbody>';
 													// Iterasi data mahasiswa yang ditemukan dan menampilkannya dalam tabel
-													foreach ($cariMahasiswa as $index => $mahasiswa){
+													foreach ($cariBuku as $index => $buku){
 														// Menampilkan baris data mahasiswa dalam tabel
 														echo '<tr class="align-middle">
 															<td>'.($index + 1).'</td>
-															<td>'.$buku['id_buku'].'</td>
-															<td>'.$buku['ISBN'].'</td>
 															<td>'.$buku['judul_buku'].'</td>
-															<td>'.$buku['kategori'].'</td>
+															<td>'.$buku['ISBN'].'</td>
+															<td>'.$buku['tahun'].'</td>
 															<td>'.$buku['penerbit'].'</td>
+															<td>'.$buku['kategori'].'</td>
 															<td>'.$buku['email'].'</td>
 															<td>'.$buku['telp'].'</td>
 															<td class="text-center">
-																<button type="button" class="btn btn-sm btn-warning me-1" onclick="window.location.href=\'data-edit.php?id='.$buku['id'].'\'"><i class="bi bi-pencil-fill"></i> Edit</button>
-																<button type="button" class="btn btn-sm btn-danger" onclick="if(confirm(\'Yakin ingin menghapus data buku ini?\')){window.location.href=\'proses/proses-delete.php?id='.$buku['id'].'\'}"><i class="bi bi-trash-fill"></i> Hapus</button>
+																<button type="button" class="btn btn-sm btn-warning me-1" onclick="window.location.href=\'data-edit.php?id='.$buku['id_buku'].'\'"><i class="bi bi-pencil-fill"></i> Edit</button>
+																<button type="button" class="btn btn-sm btn-danger" onclick="if(confirm(\'Yakin ingin menghapus data buku ini?\')){window.location.href=\'proses/proses-delete.php?id='.$buku['id_buku'].'\'}"><i class="bi bi-trash-fill"></i> Hapus</button>
 															</td>
 														</tr>';
 													}

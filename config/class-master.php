@@ -29,7 +29,7 @@ class MasterData extends Database {
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
                 $kategori[] = [
-                    'id' => $row['id_buku'],
+                    'id' => $row['id_kategori'],
                     'nama' => $row['kategori_buku']
                 ];
             }
@@ -41,7 +41,7 @@ class MasterData extends Database {
     public function inputtahun($data){
         $kodetahun = $data['kode'];
         $namatahun = $data['nama'];
-        $query = "INSERT INTO tb_prodi (kode_prodi, nama_prodi) VALUES (?, ?)";
+        $query = "INSERT INTO tb_tahun (kode_tahun, nama_tahun) VALUES (?, ?)";
         $stmt = $this->conn->prepare($query);
         if(!$stmt){
             return false;
@@ -62,10 +62,10 @@ class MasterData extends Database {
         $stmt->bind_param("s", $id);
         $stmt->execute();
         $result = $stmt->get_result();
-        $prodi = null;
+        $tahun = null;
         if($result->num_rows > 0){
             $row = $result->fetch_assoc();
-            $prodi = [
+            $tahun = [
                 'id' => $row['kode_tahun'],
                 'nama' => $row['nama_tahun']
             ];
@@ -118,7 +118,7 @@ class MasterData extends Database {
 
     // Method untuk mendapatkan data kategori berdasarkan id buku
     public function getUpdateKategori($id){
-        $query = "SELECT * FROM tb_kategori WHERE id_buku = ?";
+        $query = "SELECT * FROM tb_kategori WHERE id_kategori = ?";
         $stmt = $this->conn->prepare($query);
         if(!$stmt){
             return false;
@@ -130,7 +130,7 @@ class MasterData extends Database {
         if($result->num_rows > 0){
             $row = $result->fetch_assoc();
             $kategori = [
-                'id' => $row['id_buku'],
+                'id' => $row['id_kategori'],
                 'nama' => $row['kategori_buku']
             ];
         }
@@ -142,12 +142,12 @@ class MasterData extends Database {
     public function updateKategori($data){
         $idkategori = $data['id'];
         $namakategori = $data['nama'];
-        $query = "UPDATE tb_kategori SET nama_kategori = ? WHERE id_buku = ?";
+        $query = "UPDATE tb_kategori SET kategori_buku = ? WHERE id_kategori = ?";
         $stmt = $this->conn->prepare($query);
         if(!$stmt){
             return false;
         }
-        $stmt->bind_param("si", $kategori, $id_buku);
+        $stmt->bind_param("si", $kategori, $id_kategori);
         $result = $stmt->execute();
         $stmt->close();
         return $result;
@@ -155,7 +155,7 @@ class MasterData extends Database {
 
     // Method untuk menghapus data kategori buku
     public function deleteKategori($id){
-        $query = "DELETE FROM tb_kategori WHERE id_buku = ?";
+        $query = "DELETE FROM tb_kategori WHERE id_kategori = ?";
         $stmt = $this->conn->prepare($query);
         if(!$stmt){
             return false;

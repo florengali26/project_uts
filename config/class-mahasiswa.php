@@ -8,23 +8,22 @@ class Buku extends Database {
     // Method untuk input data mahasiswa
     public function inputBuku($data){
         // Mengambil data dari parameter $data
-        $id_buku      = $data['id_buku'];
         $ISBN         = $data['ISBN'];
         $judul_buku   = $data['judul_buku'];
         $tahun        = $data['tahun'];
-        $alamat       = $data['alamat'];
+        $penerbit     = $data['penerbit'];
         $kategori     = $data['kategori'];
         $email        = $data['email'];
         $telp         = $data['telp'];
         // Menyiapkan query SQL untuk insert data menggunakan prepared statement
-        $query = "INSERT INTO tb_buku (id_buku, ISBN, judul_buku, tahun, alamat, kategori, email, telp ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO tb_buku (ISBN, judul_buku, tahun, nama_penerbit, kategori_buku, email, telp ) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($query);
         // Mengecek apakah statement berhasil disiapkan
         if(!$stmt){
             return false;
         }
         // Memasukkan parameter ke statement
-        $stmt->bind_param("ssssssss", $id_buku, $ISBN, $judul_buku, $tahun, $alamat, $kategori, $email, $telp );
+        $stmt->bind_param("sssssss",  $ISBN, $judul_buku, $tahun, $penerbit, $kategori, $email, $telp );
         $result = $stmt->execute();
         $stmt->close();
         // Mengembalikan hasil eksekusi query
@@ -34,10 +33,10 @@ class Buku extends Database {
     // Method untuk mengambil semua data mahasiswa
     public function getAllBuku(){
         // Menyiapkan query SQL untuk mengambil data mahasiswa beserta prodi dan provinsi
-        $query = "SELECT id_buku, ISBN, judul_buku, tahun, kategori, alamat, email, telp  
+        $query = "SELECT id_buku, ISBN, judul_buku, tahun, nama_penerbit, tb_kategori.kategori_buku, email, telp  
                   FROM tb_buku
                   JOIN tb_tahun ON tahun = kode_tahun
-                  JOIN tb_kategori ON kategori_buku = id_buku";
+                  JOIN tb_kategori ON tb_buku.kategori_buku = id_kategori";
         $result = $this->conn->query($query);
         // Menyiapkan array kosong untuk menyimpan data mahasiswa
         $buku = [];
@@ -50,8 +49,8 @@ class Buku extends Database {
                     'ISBN' => $row['ISBN'],
                     'judul_buku' => $row['judul_buku'],
                     'tahun' => $row['tahun'],
-                    'kategori' => $row['kategori'],
-                    'alamat' => $row['alamat'],
+                    'penerbit' => $row['nama_penerbit'],
+                    'kategori' => $row['kategori_buku'],
                     'email' => $row['email'],
                     'telp' => $row['telp']
                 ];
@@ -82,8 +81,8 @@ class Buku extends Database {
                 'ISBN' => $row['ISBN'],
                 'judul_buku' => $row['judul_buku'],
                 'tahun' => $row['tahun'],
-                'alamat' => $row['alamat'],
-                'kategori' => $row['kategori'],
+                'penerbit' => $row['nama_penerbit'],
+                'kategori' => $row['kategori_buku'],
                 'email' => $row['email'],
                 'telp' => $row['telp']
             ];
@@ -96,22 +95,22 @@ class Buku extends Database {
     // Method untuk mengedit data mahasiswa
     public function editBuku($data){
         // Mengambil data dari parameter $data
-        $id_buku       = $data['id_buku'];
-        $ISBN      = $data['ISBN'];
-        $judul_buku     = $data['judul_buku'];
-        $tahun    = $data['tahun'];
-        $alamat   = $data['alamat'];
-        $kategori = $data['kategori'];
-        $email    = $data['email'];
-        $telp     = $data['telp'];
+        $id_buku        = $data['id_buku'];
+        $ISBN           = $data['ISBN'];
+        $judul_buku     = $data['judul'];
+        $tahun          = $data['tahun'];
+        $penerbit     = $data['penerbit'];
+        $kategori       = $data['kategori'];
+        $email          = $data['email'];
+        $telp           = $data['telp'];
         // Menyiapkan query SQL untuk update data menggunakan prepared statement
-        $query = "UPDATE tb_buku SET  ISBN = ?, judul_buku = ?, tahun = ?, alamat = ?, kategori = ?, email = ?, telp = ?,  WHERE id_buku = ?";
+        $query = "UPDATE tb_buku SET  ISBN = ?, judul_buku = ?, tahun = ?, nama_penerbit = ?, kategori_buku = ?, email = ?, telp = ?  WHERE id_buku = ?";
         $stmt = $this->conn->prepare($query);
         if(!$stmt){
             return false;
         }
         // Memasukkan parameter ke statement
-        $stmt->bind_param("ssssssssi", $id_buku, $judul_buku,  $ISBN, $tahun, $alamat, $kategori, $email, $telp );
+        $stmt->bind_param("sssssssi", $ISBN, $judul_buku,   $tahun, $penerbit, $kategori, $email, $telp, $id_buku );
         $result = $stmt->execute();
         $stmt->close();
         // Mengembalikan hasil eksekusi query
@@ -138,18 +137,18 @@ class Buku extends Database {
         // Menyiapkan LIKE query untuk pencarian
         $likeQuery = "%".$kataKunci."%";
         // Menyiapkan query SQL untuk pencarian data mahasiswa menggunakan prepared statement
-        $query = "SELECT id_buku, judul_buku, ISBN, tahun, alamat, kategori, email, telp
+        $query = "SELECT id_buku, judul_buku, ISBN, tahun, nama_penerbit, tb_kategori.kategori_buku, email, telp
                   FROM tb_buku
-                  JOIN tb_tahun ON nama_tahun = kode_tahun
-                  JOIN tb_kategori ON kategori_buku = id_buku
-                  WHERE id_buku LIKE ? OR judul_buku LIKE ?";
+                  JOIN tb_tahun ON tahun = kode_tahun
+                  JOIN tb_kategori ON tb_buku.kategori_buku = id_kategori
+                  WHERE judul_buku LIKE ?";
         $stmt = $this->conn->prepare($query);
         if(!$stmt){
             // Mengembalikan array kosong jika statement gagal disiapkan
             return [];
         }
         // Memasukkan parameter ke statement
-        $stmt->bind_param("ss", $likeQuery, $likeQuery);
+        $stmt->bind_param("s", $likeQuery);
         $stmt->execute();
         $result = $stmt->get_result();
         // Menyiapkan array kosong untuk menyimpan data mahasiswa
@@ -162,8 +161,9 @@ class Buku extends Database {
                     'id_buku' => $row['id_buku'],
                     'ISBN' => $row['ISBN'],
                     'judul_buku' => $row['judul_buku'],
-                    'kategori' => $row['kategori'],
-                    'alamat' => $row['alamat'],
+                    'tahun' => $row['tahun'],
+                    'penerbit' => $row['nama_penerbit'],
+                    'kategori' => $row['kategori_buku'],
                     'email' => $row['email'],
                     'telp' => $row['telp']
                 ];
