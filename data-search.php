@@ -7,7 +7,7 @@ $kataKunci = '';
 if(isset($_GET['search'])){
 	// Mengambil kata kunci pencarian dari parameter GET 'search'
 	$kataKunci = $_GET['search'];
-	// Memanggil method searchMahasiswa untuk mencari data mahasiswa berdasarkan kata kunci dan menyimpan hasil dalam variabel $cariMahasiswa
+	// Memanggil method searchBuku untuk mencari data buku berdasarkan kata kunci dan menyimpan hasil dalam variabel $cariBuku
 	$cariBuku = $buku->searchBuku($kataKunci);
 } 
 ?>
@@ -87,7 +87,7 @@ if(isset($_GET['search'])){
 										<?php
 										// Mengecek apakah parameter GET 'search' ada
 										if(isset($_GET['search'])){
-											// Mengecek apakah ada data mahasiswa yang ditemukan
+											// Mengecek apakah ada data buku yang ditemukan
 											if(count($cariBuku) > 0){
 												// Menampilkan tabel hasil pencarian
 												echo '<table class="table table-striped" role="table">
@@ -104,9 +104,9 @@ if(isset($_GET['search'])){
 														</tr>
 													</thead>
 													<tbody>';
-													// Iterasi data mahasiswa yang ditemukan dan menampilkannya dalam tabel
+													// Iterasi data buku yang ditemukan dan menampilkannya dalam tabel
 													foreach ($cariBuku as $index => $buku){
-														// Menampilkan baris data mahasiswa dalam tabel
+														// Menampilkan baris data buku dalam tabel
 														echo '<tr class="align-middle">
 															<td>'.($index + 1).'</td>
 															<td>'.$buku['judul_buku'].'</td>
@@ -125,7 +125,7 @@ if(isset($_GET['search'])){
 												echo '</tbody>
 												</table>';
 											} else {
-												// Menampilkan pesan jika tidak ada data mahasiswa yang ditemukan
+												// Menampilkan pesan jika tidak ada data buku yang ditemukan
 												echo '<div class="alert alert-warning" role="alert">
 														Tidak ditemukan data buku yang sesuai dengan kata kunci "<strong>'.htmlspecialchars($_GET['search']).'</strong>".
 													  </div>';

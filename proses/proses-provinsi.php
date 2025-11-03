@@ -6,11 +6,11 @@ include '../config/class-master.php';
 $master = new MasterData();
 // Mengecek aksi yang dilakukan berdasarkan parameter GET 'aksi'
 if($_GET['aksi'] == 'inputkategori'){
-    // Mengambil data provinsi dari form input menggunakan metode POST dan menyimpannya dalam array
+    // Mengambil data kategori dari form input menggunakan metode POST dan menyimpannya dalam array
     $dataKategori = [
         'kategori' => $_POST['kategori_buku']
     ];
-    // Memanggil method inputProvinsi untuk memasukkan data provinsi dengan parameter array $dataProvinsi
+    // Memanggil method inputKategori untuk memasukkan data kategori dengan parameter array $dataKategori
     $input = $master->inputKategori($dataKategori);
     if($input){
         header("Location: ../master-kategori-list.php?status=inputsuccess");
@@ -18,12 +18,12 @@ if($_GET['aksi'] == 'inputkategori'){
         header("Location: ../master-kategori-input.php?status=failed");
     }
 } elseif($_GET['aksi'] == 'updatekategori'){
-    // Mengambil data provinsi dari form edit menggunakan metode POST dan menyimpannya dalam array
+    // Mengambil data kategori dari form edit menggunakan metode POST dan menyimpannya dalam array
     $dataKategori = [
         'id' => $_POST['id_kategori'],
         'kategori' => $_POST['kategori_buku']
     ];
-    // Memanggil method updateProvinsi untuk mengupdate data provinsi dengan parameter array $dataProvinsi
+    // Memanggil method updateKategori untuk mengupdate data kategori dengan parameter array $dataKategori
     $update = $master->updateKategori($dataKategori);
     if($update){
         header("Location: ../master-kategori-list.php?status=editsuccess");
@@ -31,9 +31,9 @@ if($_GET['aksi'] == 'inputkategori'){
         header("Location: ../master-kategori-edit.php?id=".$dataKategori['id']."&status=failed");
     }
 } elseif($_GET['aksi'] == 'deletekategori'){
-    // Mengambil id provinsi dari parameter GET
+    // Mengambil id kategori dari parameter GET
     $id = $_GET['id'];
-    // Memanggil method deleteProvinsi untuk menghapus data provinsi berdasarkan id
+    // Memanggil method deleteKategori untuk menghapus data kategori berdasarkan id
     $delete = $master->deleteKategori($id);
     if($delete){
         header("Location: ../master-kategori-list.php?status=deletesuccess");

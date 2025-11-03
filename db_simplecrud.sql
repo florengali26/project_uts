@@ -19,7 +19,7 @@
 CREATE DATABASE IF NOT EXISTS `db_simplecrud` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */;
 USE `db_simplecrud`;
 
--- Dumping structure for table db_simplecrud.tb_mahasiswa
+-- Dumping structure for table db_simplecrud.tb_buku
 CREATE TABLE IF NOT EXISTS `tb_buku` (
   `id_buku` int(11) NOT NULL AUTO_INCREMENT,
   `ISBN` char(12) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
@@ -33,16 +33,16 @@ CREATE TABLE IF NOT EXISTS `tb_buku` (
   PRIMARY KEY (`id_mhs`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table db_simplecrud.tb_mahasiswa: ~0 rows (approximately)
+-- Dumping data for table db_simplecrud.tb_buku: ~0 rows (approximately)
 
--- Dumping structure for table db_simplecrud.tb_prodi
+-- Dumping structure for table db_simplecrud.tb_tahun
 CREATE TABLE IF NOT EXISTS `tb_tahun` (
   `kode_tahun` char(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nama_tahun` char(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`kode_tahun`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table db_simplecrud.tb_prodi: ~9 rows (approximately)
+-- Dumping data for table db_simplecrud.tb_tahun: ~9 rows (approximately)
 INSERT INTO `tb_tahun` (`kode_tahun`, `nama_tahun`) VALUES
 	('2014', '2014'),
 	('2015', '2015'),

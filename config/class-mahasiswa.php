@@ -5,7 +5,7 @@ include_once 'db-config.php';
 
 class Buku extends Database {
 
-    // Method untuk input data mahasiswa
+    // Method untuk input data buku
     public function inputBuku($data){
         // Mengambil data dari parameter $data
         $ISBN         = $data['ISBN'];
@@ -30,15 +30,15 @@ class Buku extends Database {
         return $result;
     }
 
-    // Method untuk mengambil semua data mahasiswa
+    // Method untuk mengambil semua data buku
     public function getAllBuku(){
-        // Menyiapkan query SQL untuk mengambil data mahasiswa beserta prodi dan provinsi
+        // Menyiapkan query SQL untuk mengambil data buku beserta tahun dan kategori buku
         $query = "SELECT id_buku, ISBN, judul_buku, tahun, nama_penerbit, tb_kategori.kategori_buku, email, telp  
                   FROM tb_buku
                   JOIN tb_tahun ON tahun = kode_tahun
                   JOIN tb_kategori ON tb_buku.kategori_buku = id_kategori";
         $result = $this->conn->query($query);
-        // Menyiapkan array kosong untuk menyimpan data mahasiswa
+        // Menyiapkan array kosong untuk menyimpan data buku
         $buku = [];
         // Mengecek apakah ada data yang ditemukan
         if($result->num_rows > 0){
@@ -56,13 +56,13 @@ class Buku extends Database {
                 ];
             }
         }
-        // Mengembalikan array data mahasiswa
+        // Mengembalikan array data buku
         return $buku;
     }
 
-    // Method untuk mengambil data mahasiswa berdasarkan ID
+    // Method untuk mengambil data buku berdasarkan ID
     public function getUpdateBuku($id){
-        // Menyiapkan query SQL untuk mengambil data mahasiswa berdasarkan ID menggunakan prepared statement
+        // Menyiapkan query SQL untuk mengambil data buku berdasarkan ID menggunakan prepared statement
         $query = "SELECT * FROM tb_buku WHERE id_buku = ?";
         $stmt = $this->conn->prepare($query);
         if(!$stmt){
@@ -73,7 +73,7 @@ class Buku extends Database {
         $result = $stmt->get_result();
         $data = false;
         if($result->num_rows > 0){
-            // Mengambil data mahasiswa  
+            // Mengambil data buku  
             $row = $result->fetch_assoc();
             // Menyimpan data dalam array
             $data = [
@@ -88,11 +88,11 @@ class Buku extends Database {
             ];
         }
         $stmt->close();
-        // Mengembalikan data mahasiswa
+        // Mengembalikan data buku
         return $data;
     }
 
-    // Method untuk mengedit data mahasiswa
+    // Method untuk mengedit data buku
     public function editBuku($data){
         // Mengambil data dari parameter $data
         $id_buku        = $data['id_buku'];
@@ -117,7 +117,7 @@ class Buku extends Database {
         return $result;
     }
 
-    // Method untuk menghapus data mahasiswa
+    // Method untuk menghapus data buku
     public function deleteBuku($id){
         // Menyiapkan query SQL untuk delete data menggunakan prepared statement
         $query = "DELETE FROM tb_buku WHERE id_buku = ?";
@@ -132,11 +132,11 @@ class Buku extends Database {
         return $result;
     }
 
-    // Method untuk mencari data mahasiswa berdasarkan kata kunci
+    // Method untuk mencari data buku berdasarkan kata kunci
     public function searchBuku($kataKunci){
         // Menyiapkan LIKE query untuk pencarian
         $likeQuery = "%".$kataKunci."%";
-        // Menyiapkan query SQL untuk pencarian data mahasiswa menggunakan prepared statement
+        // Menyiapkan query SQL untuk pencarian data buku menggunakan prepared statement
         $query = "SELECT id_buku, judul_buku, ISBN, tahun, nama_penerbit, tb_kategori.kategori_buku, email, telp
                   FROM tb_buku
                   JOIN tb_tahun ON tahun = kode_tahun
@@ -151,12 +151,12 @@ class Buku extends Database {
         $stmt->bind_param("s", $likeQuery);
         $stmt->execute();
         $result = $stmt->get_result();
-        // Menyiapkan array kosong untuk menyimpan data mahasiswa
+        // Menyiapkan array kosong untuk menyimpan data buku
         $buku = [];
         if($result->num_rows > 0){
             // Mengambil setiap baris data dan memasukkannya ke dalam array
             while($row = $result->fetch_assoc()) {
-                // Menyimpan data mahasiswa dalam array
+                // Menyimpan data buku dalam array
                 $buku[] = [
                     'id_buku' => $row['id_buku'],
                     'ISBN' => $row['ISBN'],
@@ -170,7 +170,7 @@ class Buku extends Database {
             }
         }
         $stmt->close();
-        // Mengembalikan array data mahasiswa yang ditemukan
+        // Mengembalikan array data buku yang ditemukan
         return $buku;
     }
 

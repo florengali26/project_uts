@@ -2,9 +2,9 @@
 
 include_once 'config/class-master.php';
 $master = new MasterData();
-// Mengambil daftar program studi, provinsi, dan status mahasiswa
+// Mengambil daftar tahun terbit dan kategori buku
 $tahunlist = $master->getTahun();
-// Mengambil daftar provinsi
+// Mengambil daftar kategori
 $kategoriList = $master->getKategori();
 // Menampilkan alert berdasarkan status yang diterima melalui parameter GET
 ?>
@@ -72,7 +72,7 @@ $kategoriList = $master->getKategori();
                                                 <select class="form-select" id="tahun" name="tahun" required>
                                                     <option value="" selected disabled>Pilih Tahun Terbit</option>
                                                     <?php 
-                                                    // Iterasi daftar program studi dan menampilkannya sebagai opsi dalam dropdown
+                                                    // Iterasi daftar tahun terbit dan menampilkannya sebagai opsi dalam dropdown
                                                     foreach ($tahunlist as $tahun){
                                                         echo '<option value="'.$tahun['id'].'">'.$tahun['nama'].'</option>';
                                                     }
@@ -88,7 +88,7 @@ $kategoriList = $master->getKategori();
                                                 <select class="form-select" id="kategori" name="kategori" required>
                                                     <option value="" selected disabled>Pilih Kategori</option>
                                                     <?php
-                                                    // Iterasi daftar provinsi dan menampilkannya sebagai opsi dalam dropdown
+                                                    // Iterasi daftar kategori dan menampilkannya sebagai opsi dalam dropdown
                                                     foreach ($kategoriList as $kategori){
                                                         echo '<option value="'.$kategori['id'].'">'.$kategori['nama'].'</option>';
                                                     }

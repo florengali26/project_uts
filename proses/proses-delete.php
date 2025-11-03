@@ -1,12 +1,12 @@
 <?php
 
-// Memasukkan file class-mahasiswa.php untuk mengakses class Mahasiswa
+// Memasukkan file class-mahasiswa.php untuk mengakses class Buku
 include_once '../config/class-mahasiswa.php';
-// Membuat objek dari class Mahasiswa
+// Membuat objek dari class Buku
 $buku = new Buku();
-// Mengambil id mahasiswa dari parameter GET
+// Mengambil id Buku dari parameter GET
 $id = $_GET['id'];
-// Memanggil method deleteMahasiswa untuk menghapus data mahasiswa berdasarkan id
+// Memanggil method deleteBuku untuk menghapus data Buku berdasarkan id
 $delete = $buku->deleteBuku($id);
 // Mengecek apakah proses delete berhasil atau tidak - true/false
 if($delete){

@@ -1,10 +1,10 @@
 <?php
 
-// Memasukkan file class-mahasiswa.php untuk mengakses class Mahasiswa
+// Memasukkan file class-mahasiswa.php untuk mengakses class Buku
 include_once '../config/class-mahasiswa.php';
-// Membuat objek dari class Mahasiswa
+// Membuat objek dari class Buku
 $buku = new Buku();
-// Mengambil data mahasiswa dari form edit menggunakan metode POST dan menyimpannya dalam array
+// Mengambil data Buku dari form edit menggunakan metode POST dan menyimpannya dalam array
 $dataBuku = [
     'id_buku' => $_POST['id_buku'],
     'ISBN' => $_POST['isbn'],
@@ -15,14 +15,14 @@ $dataBuku = [
     'email' => $_POST['email'],
     'telp' => $_POST['telp'],
 ];
-// Memanggil method editMahasiswa untuk mengupdate data mahasiswa dengan parameter array $dataMahasiswa
+// Memanggil method editBuku untuk mengupdate data Buku dengan parameter array $dataBuku
 $edit = $buku->editBuku($dataBuku);
 // Mengecek apakah proses edit berhasil atau tidak - true/false
 if($edit){
     // Jika berhasil, redirect ke halaman data-list.php dengan status editsuccess
     header("Location: ../data-list.php?status=editsuccess");
 } else {
-    // Jika gagal, redirect ke halaman data-edit.php dengan status failed dan membawa id mahasiswa
+    // Jika gagal, redirect ke halaman data-edit.php dengan status failed dan membawa id buku
     header("Location: ../data-edit.php?id=".$dataBuku['id']."&status=failed");
 }
 

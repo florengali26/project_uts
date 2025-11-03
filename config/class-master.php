@@ -21,7 +21,7 @@ class MasterData extends Database {
         return $tahun;
     }
 
-    // Method untuk mendapatkan daftar provinsi
+    // Method untuk mendapatkan daftar kategori
     public function getKategori(){
         $query = "SELECT * FROM tb_kategori";
         $result = $this->conn->query($query);
@@ -37,7 +37,7 @@ class MasterData extends Database {
         return $kategori;
     }
 
-    // Method untuk input data program studi
+    // Method untuk input data tahun
     public function inputtahun($data){
         $kodetahun = $data['kode'];
         $namatahun = $data['nama'];

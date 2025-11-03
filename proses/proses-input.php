@@ -1,10 +1,10 @@
 <?php
 
-// Memasukkan file class-mahasiswa.php untuk mengakses class Mahasiswa
+// Memasukkan file class-mahasiswa.php untuk mengakses class Buku
 include '../config/class-mahasiswa.php';
-// Membuat objek dari class Mahasiswa
+// Membuat objek dari class Buku
 $buku = new Buku();
-// Mengambil data mahasiswa dari form input menggunakan metode POST dan menyimpannya dalam array
+// Mengambil data Buku dari form input menggunakan metode POST dan menyimpannya dalam array
 $dataBuku = [
     'ISBN' => $_POST['isbn'],
     'judul_buku' => $_POST['judul'],
@@ -14,7 +14,7 @@ $dataBuku = [
     'email' => $_POST['email'],
     'telp' => $_POST['telp']
 ];
-// Memanggil method inputMahasiswa untuk memasukkan data mahasiswa dengan parameter array $dataMahasiswa
+// Memanggil method inputBuku untuk memasukkan data Buku dengan parameter array $dataBuku
 $input = $buku->inputBuku($dataBuku);
 // Mengecek apakah proses input berhasil atau tidak - true/false
 if($input){

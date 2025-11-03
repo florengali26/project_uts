@@ -4,11 +4,11 @@ include_once 'config/class-master.php';
 include_once 'config/class-mahasiswa.php';
 $master = new MasterData();
 $buku = new Buku();
-// Mengambil daftar program studi, provinsi, dan status mahasiswa
+// Mengambil daftar tahun terbit dan kategori buku
 $tahunList = $master->getTahun();
-// Mengambil daftar provinsi
+// Mengambil daftar kategori
 $kategoriList = $master->getKategori();
-// Mengambil data mahasiswa yang akan diedit berdasarkan id dari parameter GET
+// Mengambil data buku yang akan diedit berdasarkan id dari parameter GET
 $dataBuku = $buku->getUpdateBuku($_GET['id']);
 if(isset($_GET['status'])){
     if($_GET['status'] == 'failed'){
@@ -81,16 +81,16 @@ if(isset($_GET['status'])){
                                                 <select class="form-select" id="tahun" name="tahun" required>
                                                     <option value="" selected disabled>Pilih Tahun Terbit</option>
                                                     <?php 
-                                                    // Iterasi daftar program studi dan menandai yang sesuai dengan data mahasiswa yang dipilih
+                                                    // Iterasi daftar tahun terbit dan menandai yang sesuai dengan data buku yang dipilih
                                                     foreach ($tahunList as $tahun){
                                                         // Menginisialisasi variabel kosong untuk menandai opsi yang dipilih
                                                         $selectedTahun = "";
-                                                        // Mengecek apakah program studi saat ini sesuai dengan data mahasiswa
+                                                        // Mengecek apakah tahun terbit saat ini sesuai dengan data Buku
                                                         if($dataBuku['tahun'] == $tahun['id']){
                                                             // Jika sesuai, tandai sebagai opsi yang dipilih
                                                             $selectedTahun = "selected";
                                                         }
-                                                        // Menampilkan opsi program studi dengan penanda yang sesuai
+                                                        // Menampilkan opsi Tahun dengan penanda yang sesuai
                                                         echo '<option value="'.$tahun['id'].'" '.$selectedTahun.'>'.$tahun['nama'].'</option>';
                                                     }
                                                     ?>
@@ -105,11 +105,11 @@ if(isset($_GET['status'])){
                                                 <select class="form-select" id="kategori" name="kategori" required>
                                                     <option value="" selected disabled>Pilih Kategori</option>
                                                     <?php
-                                                    // Iterasi daftar provinsi dan menandai yang sesuai dengan data mahasiswa yang dipilih
+                                                    // Iterasi daftar kategori dan menandai yang sesuai dengan data buku yang dipilih
                                                     foreach ($kategoriList as $kategori){
                                                         // Menginisialisasi variabel kosong untuk menandai opsi yang dipilih
                                                         $selectedkategori = "";
-                                                        // Mengecek apakah provinsi saat ini sesuai dengan data mahasiswa
+                                                        // Mengecek apakah kategori saat ini sesuai dengan data buku
                                                         if($dataBuku['kategori'] == $kategori['id']){
                                                             // Jika sesuai, tandai sebagai opsi yang dipilih
                                                             $selectedkategori = "selected";
