@@ -119,7 +119,7 @@ if(isset($_GET['search'])){
 															<td class="text-center">
 																<button type="button" class="btn btn-sm btn-warning me-1" onclick="window.location.href=\'data-edit.php?id='.$buku['id_buku'].'\'"><i class="bi bi-pencil-fill"></i> Edit</button>
 																<button type="button" class="btn btn-sm btn-danger" onclick="if(confirm(\'Yakin ingin menghapus data buku ini?\')){window.location.href=\'proses/proses-delete.php?id='.$buku['id_buku'].'\'}"><i class="bi bi-trash-fill"></i> Hapus</button>
-															</td>
+															</td> 
 														</tr>';
 													}
 												echo '</tbody>

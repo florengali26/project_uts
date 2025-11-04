@@ -1,7 +1,7 @@
-<aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
+<aside class="app-sidebar bg-body-secondary shadow">
     <div class="sidebar-brand">
         <a href="index.php" class="brand-link">
-            <img src="assets/img/logo.png" alt="AdminLTE Logo" class="brand-image opacity-75 shadow" />
+            <img src="assets/img/logo-buku.png" class="brand-image opacity-75 shadow" />
             <span class="brand-text fw-light">SIMABUK-CRUD</span>
         </a>
     </div>

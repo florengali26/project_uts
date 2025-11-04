@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `tb_buku` (
   `kategori_buku` mediumint(3) NOT NULL,
   `email` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `telp` char(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  PRIMARY KEY (`id_mhs`)
+  PRIMARY KEY (`id_buku`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table db_simplecrud.tb_buku: ~0 rows (approximately)

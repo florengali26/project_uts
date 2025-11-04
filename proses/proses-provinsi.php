@@ -33,7 +33,7 @@ if($_GET['aksi'] == 'inputkategori'){
 } elseif($_GET['aksi'] == 'deletekategori'){
     // Mengambil id kategori dari parameter GET
     $id = $_GET['id'];
-    // Memanggil method deleteKategori untuk menghapus data kategori berdasarkan id
+    // Memanggil method deleteKategori untuk menghapus data kategori    berdasarkan id
     $delete = $master->deleteKategori($id);
     if($delete){
         header("Location: ../master-kategori-list.php?status=deletesuccess");

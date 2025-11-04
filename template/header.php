@@ -5,7 +5,7 @@
 <meta name="theme-color" content="#007bff" media="(prefers-color-scheme: light)" />
 <meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)" />
 <meta name="supported-color-schemes" content="light dark" />
-<link rel="icon" href="assets/img/logo.png" type="image/png" />
+<link rel="icon" href="assets/img/logo-buku.png" type="image/png" />
 <link rel="preload" href="assets/css/adminlte.css" as="style" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css" integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q=" crossorigin="anonymous" media="print" onload="this.media='all'" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/styles/overlayscrollbars.min.css" crossorigin="anonymous" />
