@@ -23,7 +23,6 @@ if($_GET['aksi'] == 'inputtahun'){
 } elseif($_GET['aksi'] == 'updatetahun'){
     // Mengambil data tahun dari form edit menggunakan metode POST dan menyimpannya dalam array
     $dataTahun = [
-        'id' => $_POST['id'],
         'kode' => $_POST['kode'],
         'nama' => $_POST['nama']
     ];
@@ -36,7 +35,7 @@ if($_GET['aksi'] == 'inputtahun'){
         // Jika gagal, redirect ke halaman master-tahun-edit.php dengan status failed dan membawa id tahun
         header("Location: ../master-tahun-edit.php?id=".$dataTahun['id']."&status=failed");
     }
-} elseif($_GET['aksi'] == 'deletetahun'){
+} elseif($_GET['aksi'] == 'deleteprodi'){
     // Mengambil id tahun dari parameter GET
     $id = $_GET['id'];
     // Memanggil method deletetahun untuk menghapus data tahun berdasarkan id

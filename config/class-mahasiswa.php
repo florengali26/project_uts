@@ -16,7 +16,7 @@ class Buku extends Database {
         $email        = $data['email'];
         $telp         = $data['telp'];
         // Menyiapkan query SQL untuk insert data menggunakan prepared statement
-        $query = "INSERT INTO tb_buku (ISBN, judul_buku, tahun, nama_penerbit, tb_buku.kategori_buku, email, telp ) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO tb_buku (ISBN, judul_buku, tahun, nama_penerbit, kategori_buku, email, telp ) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($query);
         // Mengecek apakah statement berhasil disiapkan
         if(!$stmt){

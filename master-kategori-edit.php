@@ -65,7 +65,7 @@ if(isset($_GET['status'])){
                                             <input type="hidden" name="id" value="<?php echo $dataKategori['id']; ?>">
 											<div class="mb-3">
 												<label for="nama" class="form-label">Nama Kategori Buku</label>
-												<input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama Kategori Buku" value="<?php echo $dataKategori['nama']; ?>" required>
+												<input type="text" class="form-control" id="kategori_buku" name="kategori_buku" placeholder="Masukkan Nama Kategori Buku" value="<?php echo $dataKategori['nama']; ?>" required>
 											</div>
                                         </div>
 									    <div class="card-footer">

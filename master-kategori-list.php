@@ -5,13 +5,13 @@ include_once 'config/class-master.php';
 $master = new MasterData();
 if(isset($_GET['status'])){
 	if($_GET['status'] == 'inputsuccess'){
-		echo "<script>alert('Data provinsi berhasil ditambahkan.');</script>";
+		echo "<script>alert('Data kategori berhasil ditambahkan.');</script>";
 	} else if($_GET['status'] == 'editsuccess'){
-		echo "<script>alert('Data provinsi berhasil diubah.');</script>";
+		echo "<script>alert('Data kategori berhasil diubah.');</script>";
 	} else if($_GET['status'] == 'deletesuccess'){
-		echo "<script>alert('Data provinsi berhasil dihapus.');</script>";
+		echo "<script>alert('Data kategori berhasil dihapus.');</script>";
 	} else if($_GET['status'] == 'deletefailed'){
-		echo "<script>alert('Gagal menghapus data provinsi. Silakan coba lagi.');</script>";
+		echo "<script>alert('Gagal menghapus data kategori. Silakan coba lagi.');</script>";
 	}
 }
 $datakategori = $master->getKategori();

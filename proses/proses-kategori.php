@@ -8,7 +8,7 @@ $master = new MasterData();
 if($_GET['aksi'] == 'inputkategori'){
     // Mengambil data kategori dari form input menggunakan metode POST dan menyimpannya dalam array
     $dataKategori = [
-        'kategori' => $_POST['kategori_buku']
+        'nama' => $_POST['nama'] // ✅ Perubahan di sini: Mengambil dari name="nama" dan menggunakan key 'nama'
     ];
     // Memanggil method inputKategori untuk memasukkan data kategori dengan parameter array $dataKategori
     $input = $master->inputKategori($dataKategori);
@@ -20,8 +20,8 @@ if($_GET['aksi'] == 'inputkategori'){
 } elseif($_GET['aksi'] == 'updatekategori'){
     // Mengambil data kategori dari form edit menggunakan metode POST dan menyimpannya dalam array
     $dataKategori = [
-        'id' => $_POST['id_kategori'],
-        'kategori' => $_POST['kategori_buku']
+        'id' => $_POST['id'], // ✅ Mengambil dari name="id" di form
+        'nama' => $_POST['kategori_buku'] // ✅ Menggunakan key 'nama' agar sesuai dengan class-master.php
     ];
     // Memanggil method updateKategori untuk mengupdate data kategori dengan parameter array $dataKategori
     $update = $master->updateKategori($dataKategori);

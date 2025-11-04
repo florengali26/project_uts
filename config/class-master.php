@@ -126,7 +126,7 @@ class MasterData extends Database {
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $result = $stmt->get_result();
-        $provinsi = null;
+        $kategori = null;
         if($result->num_rows > 0){
             $row = $result->fetch_assoc();
             $kategori = [
@@ -141,13 +141,13 @@ class MasterData extends Database {
     // Method untuk mengedit data kategori buku
     public function updateKategori($data){
         $idkategori = $data['id'];
-        $namakategori = $data['nama'];
+        $namakategori = $data['nama']; // ✅ Menggunakan key 'kategori'
         $query = "UPDATE tb_kategori SET kategori_buku = ? WHERE id_kategori = ?";
         $stmt = $this->conn->prepare($query);
         if(!$stmt){
             return false;
         }
-        $stmt->bind_param("si", $kategori, $id_kategori);
+        $stmt->bind_param("si", $namakategori, $idkategori);
         $result = $stmt->execute();
         $stmt->close();
         return $result;

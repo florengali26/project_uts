@@ -64,11 +64,11 @@ if(isset($_GET['status'])){
 									    <div class="card-body">
                                             <div class="mb-3">
                                                 <label for="nama" class="form-label">Kode Tahun Terbit</label>
-                                                <input type="char" class="form-control-plaintext" id="tahun" name="tahun" placeholder="Masukkan Kode Tahun Terbit" value="<?php echo $dataTahun['id']; ?>" required readonly>
+                                                <input type="number" class="form-control-plaintext" id="kode" name="kode" placeholder="Masukkan Kode Tahun Terbit" value="<?php echo $dataTahun['id']; ?>" required readonly>
                                             </div>
 											<div class="mb-3">
 												<label for="nama" class="form-label">Tahun Terbit</label>
-												<input type="char" class="form-control" id="nama" name="nama" placeholder="Masukkan  Tahun Terbit" value="<?php echo $dataTahun['nama']; ?>" required>
+												<input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan  Tahun Terbit" value="<?php echo $dataTahun['nama']; ?>" required>
 											</div>
                                         </div>
 									    <div class="card-footer">
